@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-
+import{} from 'googlemaps';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',

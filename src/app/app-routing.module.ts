@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 
 
@@ -18,8 +19,11 @@ const routes: Routes = [
   {  
     path: 'profile',
     component: ProfileComponent
+  },  
+  { 
+  path: 'questionnaire',
+  component: QuestionnaireComponent
   }
-
 ];
 
 @NgModule({
@@ -31,5 +35,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   HomeComponent,
   MapComponent,
-  ProfileComponent
+  ProfileComponent,
+  QuestionnaireComponent
 ]
