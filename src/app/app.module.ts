@@ -7,6 +7,8 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
