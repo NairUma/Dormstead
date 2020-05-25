@@ -5,81 +5,71 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
+
 export class MapComponent implements AfterViewInit {
-  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
   map: google.maps.Map;
+  directionsService: google.maps.DirectionsService = new google.maps.DirectionsService();
+  directionRenderer: google.maps.DirectionsRenderer = new google.maps.DirectionsRenderer();
+
   lat = 33.1294983;
   lng = -117.1617594;
 
-  markers = [
-    {
-      position: new google.maps.LatLng(40.73061, 73.935242),
-      map: this.map,
-      title: "Marker 1"
-    },
-    {
-      position: new google.maps.LatLng(32.06485, 34.763226),
-      map: this.map,
-      title: "Marker 2"
-    }
-  ];
-
-  //Coordinates to set the center of the map
-  coordinates = new google.maps.LatLng(this.lat, this.lng);
-
-  mapOptions: google.maps.MapOptions = {
-    center: this.coordinates,
-    zoom: 12,
-  };
-
-  //Default marker
-  marker = new google.maps.Marker({
-    position: this.coordinates,
-    map: this.map,
-    title: "Hello CSUSM!"
-  });
-
   ngAfterViewInit(): void {
     this.mapInitializer();
+    this.directionRenderInit();
   }
 
   mapInitializer(): void {
-    this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
-    
-        //Adding Click event to default marker
-        this.marker.addListener("click", () => {
-          const infoWindow = new google.maps.InfoWindow({
-            content: this.marker.getTitle()
-          });
-          infoWindow.open(this.marker.getMap(), this.marker);
-        });
-    
-        //Adding default marker to map
-        this.marker.setMap(this.map);
-    
-        //Adding other markers
-        this.loadAllMarkers();
+    //Coordinates to set the center of the map
+    let coordinates = new google.maps.LatLng(this.lat, this.lng);
+
+    let mapOptions: google.maps.MapOptions = {
+      center: coordinates,
+      zoom: 12,
+    };
+
+    //Default marker
+    let marker = new google.maps.Marker({
+      position: coordinates,
+      map: this.map,
+      title: "Hello CSUSM!"
+    });
+
+    this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
+
+    //Adding Click event to default marker
+    marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: marker.getTitle()
+      });
+      infoWindow.open(marker.getMap(), marker);
+    });
+
+    //Adding default marker to map
+    marker.setMap(this.map);
+  }
+
+  directionServiceInit(): void {
+
+  }
+
+  directionRenderInit(): void {
+    this.directionRenderer.setMap(this.map);
+
+    let start = "California State University San Marcos";
+    let end = "San Diego";
+
+    let request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    this.directionsService.route(request, (result, status) => {
+      if (status == google.maps.DirectionsStatus.OK) {
+        this.directionRenderer.setDirections(result);
       }
-    
-      loadAllMarkers(): void {
-        this.markers.forEach(markerInfo => {
-          //Creating a new marker object
-          const marker = new google.maps.Marker({
-            ...markerInfo
-          });
-    
-          //creating a new info window with markers info
-          const infoWindow = new google.maps.InfoWindow({
-            content: marker.getTitle()
-          });
-    
-          //Add click event to open info window on marker
-          marker.addListener("click", () => {
-            infoWindow.open(marker.getMap(), marker);
-          });
-    
-          //Adding marker to google map
-          marker.setMap(this.map);
-        });
+    });
   }
 }
