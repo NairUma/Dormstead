@@ -1,25 +1,21 @@
 <div class="container">
-  <div class="header">
-    <div class="menu">
-      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</a>
-        <a mat-menu-item routerLink="/map" routerLinkActive="active">Map</a>
-        <a mat-menu-item routerLink="/profile" routerLinkActive="active">Profile</a>
-      </mat-menu>
+
+  <mat-toolbar id="navbar">
+    <div>Dormstead.haus</div>
+
+    <div id="navbar-mid"></div>
+    
+    <div id="navbar-left">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="items">Home</a>
+      <a routerLink="/map" routerLinkActive="active" class="items">Map</a>
+      <a routerLink="/profile" routerLinkActive="active" class="items">Profile</a>
     </div>
-    <div class="logo-container">
-      <div class="logo"><img routerLink="/" src="assets/dormsteadlogov1.png" /></div>
-    </div>
-    <div class="buttons">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</a>
-      <a routerLink="/map" routerLinkActive="active">Map</a>
-      <a routerLink="/profile" routerLinkActive="active">Profile</a>
-    </div>
-  </div>
+  </mat-toolbar>
+
   <div class="router-outlet">
     <router-outlet></router-outlet>
   </div>
+
   <div class="footer"></div>
 </div>
 
