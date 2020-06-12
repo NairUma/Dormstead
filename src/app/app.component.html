@@ -14,13 +14,13 @@
     <div class="buttons">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</a>
       <a routerLink="/map" routerLinkActive="active">Map</a>
-      <ng-template [ngIf]="auth.user | async" [ngIfElse]="showLogin" let-username="ngIf">
+      <ng-template [ngIf]="auth.user$ | async" [ngIfElse]="showLogin" let-username="ngIf">
         <!-- <span> Hi, {{ username.displayName }}! </span> -->
         <a routerLink="/profile" routerLinkActive="active">Profile</a>
-        <a (click)="logout()">Logout</a>
+        <a (click)="auth.logout()" routerLink="/">Logout</a>
       </ng-template>
       <ng-template #showLogin>
-        <a (click)="login()">Login</a>
+        <a (click)="auth.login()">Login</a>
       </ng-template>
     </div>
   </div>

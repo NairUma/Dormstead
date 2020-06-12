@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import { AuthService } from './services/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -10,15 +9,6 @@ import { auth } from 'firebase/app';
 export class AppComponent {
   title = 'Dormstead';
 
-  //Testing below ->
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AuthService) {}
 
-  login() {
-    this.auth.signInWithPopup(new auth.GoogleAuthProvider());
-  }
-
-  logout() {
-    this.auth.signOut();
-  }
-  //End test
 }
