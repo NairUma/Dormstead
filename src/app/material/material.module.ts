@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const MaterialComponents =[
   MatButtonModule,
@@ -26,7 +27,8 @@ const MaterialComponents =[
   MatSortModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatToolbarModule
 ];
 
 @NgModule({
