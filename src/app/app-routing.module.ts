@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AngularFireAuthGuard, loggedIn, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
-
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['']);
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {  
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToHome}
   }
 
 ];

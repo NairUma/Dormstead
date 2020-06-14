@@ -9,7 +9,6 @@
 #navbar-left {
     display: flex;
     flex-direction: row;
-    
 }
 
 .items {
@@ -17,7 +16,16 @@
     padding-right: 1.5em;
     text-decoration: none;
     color: black;
+
+    outline: none;
+    transition: color 0.2s ease-out;
+    cursor: pointer;
 }
+.container .header .buttons a:hover {
+    color: #ffffff !important;
+}
+
+
 
 .items:visted {
     text-decoration: none;

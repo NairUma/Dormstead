@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "Dormstead",
+      "public": "dist/Dormstead",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

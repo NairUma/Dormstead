@@ -1,0 +1,40 @@
+.sidenav {
+    height: 100%;
+    position: fixed;
+    width: 15rem;
+    max-width: 100%;
+    background-color:#f4f4f4;
+    border-right: #cacaca;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+.main {
+    max-height: calc(100vh - 6.4375rem);
+    width: calc(100% - 15.625rem);
+    background-color: #fff;
+    left: 15.625rem;
+    position: absolute;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.navbar-container {
+    position: absolute;
+    top: 80px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    background: #cacaca;
+  }

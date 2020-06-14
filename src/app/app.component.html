@@ -8,7 +8,14 @@
     <div id="navbar-left">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="items">Home</a>
       <a routerLink="/map" routerLinkActive="active" class="items">Map</a>
-      <a routerLink="/profile" routerLinkActive="active" class="items">Profile</a>
+      <ng-template [ngIf]="auth.user$ | async" [ngIfElse]="showLogin" let-username="ngIf">
+        <!-- <span> Hi, {{ username.displayName }}! </span> -->
+        <a routerLink="/profile" routerLinkActive="active" class="items">Profile</a>
+        <a (click)="auth.logout()" routerLink="/" class="items">Logout</a>
+      </ng-template>
+      <ng-template #showLogin>
+        <a (click)="auth.login()" class="items">Login</a>
+      </ng-template>
     </div>
   </mat-toolbar>
 
