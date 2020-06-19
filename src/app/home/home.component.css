@@ -1,0 +1,45 @@
+input[type="text"] {
+    width: 25%;
+    margin-right: 5%;
+}
+
+#title {
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+#subtitle {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#searchwrapper {
+    display: block;
+    text-align: center;
+}
+
+.tinted-image {
+  
+    width: parent;
+    height: 600px;
+    z-index: 1;
+    
+    background: 
+      /* top, transparent red */ 
+      linear-gradient(
+        rgba(0, 0, 0, 0.45), 
+        rgba(0, 0, 0, 0.45)
+      ),
+      /* bottom, image */
+      url(src\assets\CSUSM.png);
+  }
+
+.fixed {
+    position: fixed;
+    color: white;
+    width: 100%;
+
+}
